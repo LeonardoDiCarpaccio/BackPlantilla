@@ -1,5 +1,9 @@
  starterPackTypeORM
 
+ careful, when delete an entity, we have to do a migrations
+
+ ###tuto add and handle entity => save method
+
  when add an entity => ex : with user, by copying client entity
 
  !!!! careful lowercase is rly important, it will give us the ability to copy paste whole file and ctrl + h the name of the entity
@@ -9,7 +13,7 @@
  in user folder, add userController.ts and userRoutes.ts
  for userController, copy the whole "clientController.ts file" (never mind which controller u copy)
  copy paste into userController, the new entity.
- 
+
  select "client" (depends the controller u copied)
  ctrl + h and replace by user (or the new entity that u just created)
 
@@ -30,9 +34,6 @@
    @ManyToOne(()=>client, client => client.id,{nullable : false,cascade : true, onDelete : "CASCADE"})
   @JoinColumn({name : "clientId"})
  client : client
-
-
-
 
 
  save API method : 
@@ -77,4 +78,33 @@
             "id" : 3,
             "name" : "client name updated"
         }
+  }
+
+
+  last but not least, u can use save for a mass insert / update
+
+  for this, send an array as body. rules are the same than before, working with an array of entity now
+
+
+ SAVE a MANY TO MANY relation
+
+ for exemple a user which is on a many to many relation with "role" table: 
+
+    @ManyToMany(()=>role)
+    @JoinTable()
+    role : role[]
+
+
+    for insert a user with role id = 1,2 and 3
+
+    EX body :  {
+      "name" : "userTest",
+      "role" : [1,2,3]
+  }
+
+  for update same thing with id
+
+  EX body :   { "id" :1,
+      "name" : "userTest",
+      "role" : [1]
   }
