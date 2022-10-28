@@ -1,0 +1,1 @@
+# starterPackTypeORM
