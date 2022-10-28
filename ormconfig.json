@@ -1,0 +1,15 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "root",
+  "password": "root",
+  "database": "testtypeorm",
+  "synchronize": true,
+  "entities": [
+    "build/src/entities/*.js"
+  ],
+  "cli": {
+    "entitiesDir": "build/src/entity"
+  }
+}
