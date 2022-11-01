@@ -28,7 +28,7 @@
 # things to know
 
 ## create Many to one relation.
-### we have to precise two column, the foraign key and the entity linked
+### we have to precise two column, the foreign key and the entity linked
 ### Exemple with projet entity which is on a ManyToOne relation with client.
 
 ### EX :   @Column()
