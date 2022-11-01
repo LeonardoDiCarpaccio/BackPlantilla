@@ -5,7 +5,7 @@
 
  # careful, when delete an entity, we have to do a migrations
 
- ## tuto add a new entity
+ # tuto add a new entity :
 
  ### when add an entity => ex : with user, by copying client entity
 
