@@ -1,4 +1,4 @@
- ##starterPackTypeORM
+ ## starterPackTypeORM
 
  careful, when delete an entity, we have to do a migrations
 
