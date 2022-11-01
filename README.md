@@ -2,9 +2,9 @@
 
  # careful, when delete an entity, we have to do a migrations
 
- ###tuto add and handle entity => save method
+ ### tuto add and handle entity => save method
 
- when add an entity => ex : with user, by copying client entity
+ #### when add an entity => ex : with user, by copying client entity
 
  !!!! careful lowercase is rly important, it will give us the ability to copy paste whole file and ctrl + h the name of the entity
 
