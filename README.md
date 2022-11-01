@@ -1,6 +1,6 @@
  ## starterPackTypeORM
 
- careful, when delete an entity, we have to do a migrations
+ # careful, when delete an entity, we have to do a migrations
 
  ###tuto add and handle entity => save method
 
