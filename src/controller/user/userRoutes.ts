@@ -7,9 +7,9 @@ export const userRoutes = [
         action : userMethods.getAll
     },
     {
-        path : "/user/get",
+        path : "/user/findBy",
         method : "post",
-        action : userMethods.getById
+        action : userMethods.findBy
     },
     {
         path : "/user/save",

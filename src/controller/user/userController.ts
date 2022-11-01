@@ -1,6 +1,7 @@
-import { getManager } from "typeorm";
+import { getManager, Like } from "typeorm";
 import {Request, Response} from "express";
 import { user } from "../../entities/user";
+import { crudMethods } from "../../helpers/crudMethods";
 
 
 export class userController {
@@ -10,9 +11,13 @@ export class userController {
         response.send(result);
     }
 
-    public async getById(request: Request, response: Response) {
+    public async findBy(request: Request, response: Response) {
         const userRepository = getManager().getRepository(user);
-        const  result = await userRepository.find({where : {id : request.body.id}});
+
+        const where = crudMethods.buildWhereClause(request.body)
+
+        const  result = await userRepository.find(where);
+        
         response.send(result);
     }
     // insert with no id, update with id
