@@ -5,13 +5,13 @@
 ###  for exemple to insert a client
 ###  (we suppose here that client's entity got only one column which is called 'name')
 
-###  so for insert we pass to the /save API this body : 
+##  so for insert we pass to the /save API this body : 
 ###  EX : {name : "client 1"}
 
-###  for update, we call the same API but this time we pass the id client to update in the body
+##  for update, we call the same API but this time we pass the id client to update in the body
 ###  EX : {id : 1,name : "updated name"}
 
-###  for many to one relations, u can only precise the foreign key OR update both entity in once
+##  for many to one relations, u can only precise the foreign key OR update both entity in once
 
 ###  Exemple with projet entity which is on a ManyToOne relation with client.
 
@@ -22,7 +22,7 @@
 ###   @JoinColumn({name : "clientId"})
 
 
- ### for simple link between project and client, you give this body to save API :
+ ## for simple link between project and client, you give this body to save API :
 
 ###    {
 ###      "id" : 1,
@@ -30,7 +30,7 @@
  ###    }
 
 
-###  OR u can add a link and edit client in the same time
+##  OR u can add a link and edit client in the same time
 
  ### EX :    
  ### {
@@ -43,12 +43,11 @@
 ###   }
 
 
-###   last but not least, u can use save for a mass insert / update
+##   last but not least, u can use save for a mass insert / update
 
-###   for this, send an array as body. rules are the same than before, working with an array of entity now
+###   for this, send an array as body. rules are the same than before
 
-
-###  SAVE a MANY TO MANY relation
+##  SAVE a MANY TO MANY relation
 
 ###  for exemple a user which is on a many to many relation with "role" table: 
 
@@ -57,14 +56,14 @@
 ###     role : role[]
 
 
- ###    for insert a user with role id = 1,2 and 3
+ ##    for insert a user with role id = 1,2 and 3
 
  ###    EX body :  {
  ###      "name" : "userTest",
 ###       "role" : [1,2,3]
 ###   }
 
- ###  for update same thing with id
+ ##  for update same thing with id
 
 ###   EX body :   { "id" :1,
 ###       "name" : "userTest",
