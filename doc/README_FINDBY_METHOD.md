@@ -4,7 +4,7 @@
 ## user with manyToMany relations with role
 ## finding here by id and name
 ## getting the entire relations 
-## selecting only name from user
+## selecting only name from user joining role entity
 
 ###     { 
 ###     "where" : {"id" : 3,"name" : "zoenfkofzennfze" },
@@ -14,11 +14,10 @@
 
 
 # EXEMPLE BODY POSSIBLE
-## finding here by name with LIKE and by id
+## finding here by name with LIKE 
 
 ###     { 
 ###     "like" : {"name" : "us" },
-###    "where" : {"id" : 2}
 ###     }
 
 # EXEMPLE BODY POSSIBLE
