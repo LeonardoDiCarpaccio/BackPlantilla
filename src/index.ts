@@ -5,6 +5,7 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import { AppRoutes } from "./routes";
 const cors = require("cors");
+const path = require("path");
 
 // create connection with database
 // note that it's not active database connection
@@ -66,7 +67,13 @@ createConnection()
       );
     });
 
-    app.use("/app", express.static("../app"));
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: false }));
+    app.use(express.static(path.join(__dirname, "../../dist/syneview.app")));
+
+    app.get("/", function (req, res) {
+      res.sendFile(path.join(__dirname, "../../dist/syneview.app/index.html"));
+    });
     // run app
     app.listen(3000);
 

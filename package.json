@@ -26,6 +26,6 @@
     "winston": "^3.3.3"
   },
   "scripts": {
-    "start": "tsc || node build/src/index.js"
+    "start": "tsc || sudo pm2 start build/src/index.js"
   }
 }
