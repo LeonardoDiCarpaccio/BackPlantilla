@@ -1,21 +1,21 @@
 import { getManager, Like } from "typeorm";
 import { Request, Response } from "express";
-import { client } from "../../entities/client";
+import { patient } from "../../entities/patient";
 import { crudMethods } from "../../helpers/crudMethods";
 
-export class clientController {
+export class patientController {
   public async getAll(request: Request, response: Response) {
-    const clientRepository = getManager().getRepository(client);
-    const result = await clientRepository.find({});
+    const patientRepository = getManager().getRepository(patient);
+    const result = await patientRepository.find({});
     response.send(result);
   }
 
   public async findBy(request: Request, response: Response) {
-    const clientRepository = getManager().getRepository(client);
+    const patientRepository = getManager().getRepository(patient);
 
     const where = crudMethods.buildWhereClause(request.body);
 
-    const result = await clientRepository.find(where);
+    const result = await patientRepository.find(where);
 
     response.send(result);
   }
@@ -23,16 +23,16 @@ export class clientController {
   // insert with no id, update with id
   public async save(request: Request, response: Response) {
     console.log("request", request.body);
-    const clientRepository = getManager().getRepository(client);
-    const result = await clientRepository.save(request.body);
+    const patientRepository = getManager().getRepository(patient);
+    const result = await patientRepository.save(request.body);
     response.send(result);
   }
 
   public async delete(request: Request, response: Response) {
-    const clientRepository = getManager().getRepository(client);
-    const result = await clientRepository.delete({ id: request.body.id });
+    const patientRepository = getManager().getRepository(patient);
+    const result = await patientRepository.delete({ id: request.body.id });
     response.send(result);
   }
 }
 
-export const clientMethods = new clientController();
+export const patientMethods = new patientController();

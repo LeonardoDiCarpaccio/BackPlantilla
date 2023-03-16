@@ -1,13 +1,16 @@
 import { clientRoutes } from "./controller/client/clientRoutes";
-import { projetRoutes } from "./controller/projet/projetRoutes";
+import { commandRoutes } from "./controller/command/commandRoutes";
+import { itemRoutes } from "./controller/item/itemRoutes";
 import { roleRoutes } from "./controller/role/roleRoutes";
-import { userRoutes } from "./controller/user/userRoutes";
-
-
-
+import { statusRoutes } from "./controller/status/statusRoutes";
+import { authRoutes } from "./controller/auth/authRoutes";
+import { patientRoutes } from "./controller/patient/patientRoutes";
 export const AppRoutes = [
-...clientRoutes,
-...projetRoutes,
-...userRoutes,
-...roleRoutes
-]
+  ...clientRoutes,
+  ...patientRoutes,
+  ...statusRoutes,
+  ...roleRoutes,
+  ...itemRoutes,
+  ...commandRoutes,
+  ...authRoutes,
+];
