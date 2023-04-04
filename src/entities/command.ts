@@ -24,12 +24,10 @@ export class command {
   @Column({ default: 1 })
   statusId: number;
 
-  @Column({ nullable: false })
-  creationDate: Date;
-
   @Column({ nullable: true })
-  finishDate: Date;
-
+  creationDateDisplay: String;
+  @Column({ nullable: true })
+  finishDateDisplay: String;
   @Column({ nullable: false })
   price: number;
 
