@@ -42,9 +42,9 @@ export class command {
   client: client;
   //JoinColum permit to iniate client.id has the column with want has foreign key
 
-  @ManyToMany(() => patient, { cascade: true })
-  @JoinTable()
-  patient: patient[];
+  // @ManyToMany(() => patient, { cascade: true })
+  // @JoinTable()
+  // patient: patient[];
 
   @ManyToOne(() => status, (status) => status.id, {
     nullable: false,
@@ -56,10 +56,10 @@ export class command {
   status: status;
   //JoinColum permit to iniate role.id has the column with want has foreign key
 
-  // @OneToMany(() => patient, (patient) => patient.id, {
-  //   nullable: false,
-  //   cascade: true,
-  // })
-  // @JoinColumn({ name: "patientId" })
-  // patient: patient;
+  @OneToMany(() => patient, (patient) => patient.id, {
+    nullable: false,
+    cascade: true,
+  })
+  @JoinColumn({ name: "patientId" })
+  patient: patient;
 }

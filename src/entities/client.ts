@@ -18,22 +18,22 @@ export class client {
   @Column()
   clientFirstName: string;
 
-  @Column()
+  @Column({ nullable: true })
   orga: string;
 
-  @Column()
+  @Column({ nullable: true })
   mail: string;
 
-  @Column()
-  price: number;
+  @Column({ nullable: true })
+  price: string;
 
-  @Column()
+  @Column({ nullable: true })
   phone: number;
 
-  @Column()
+  @Column({ nullable: true })
   location: string;
 
-  @Column()
+  @Column({ nullable: true })
   account: number;
 
   @Column({ default: 2 })
