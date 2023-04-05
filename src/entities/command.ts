@@ -56,10 +56,10 @@ export class command {
   status: status;
   //JoinColum permit to iniate role.id has the column with want has foreign key
 
-  @OneToMany(() => patient, (patient) => patient.id, {
-    nullable: false,
-    cascade: true,
-  })
-  @JoinColumn({ name: "patientId" })
-  patient: patient;
+  // @OneToMany(() => patient, (patient) => patient.id, {
+  //   nullable: false,
+  //   cascade: true,
+  // })
+  // @JoinColumn({ name: "patientId" })
+  // patient: patient;
 }
