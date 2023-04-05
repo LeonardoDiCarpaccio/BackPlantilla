@@ -5,6 +5,7 @@ import { roleRoutes } from "./controller/role/roleRoutes";
 import { statusRoutes } from "./controller/status/statusRoutes";
 import { authRoutes } from "./controller/auth/authRoutes";
 import { patientRoutes } from "./controller/patient/patientRoutes";
+import { price_typeRoutes } from "./controller/price_type/price_typeRoutes";
 export const AppRoutes = [
   ...clientRoutes,
   ...patientRoutes,
@@ -13,4 +14,5 @@ export const AppRoutes = [
   ...itemRoutes,
   ...commandRoutes,
   ...authRoutes,
+  ...price_typeRoutes,
 ];

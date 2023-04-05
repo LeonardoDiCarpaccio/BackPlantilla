@@ -37,6 +37,8 @@ export class item {
   arco: string;
   @Column({ nullable: true })
   contraArco: string;
+  @Column({ nullable: true })
+  price: string;
 
   // SECCION RETROPIE/TALON
   @Column({ nullable: true })
