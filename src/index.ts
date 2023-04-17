@@ -1,12 +1,12 @@
 import "reflect-metadata";
 import { createConnection } from "typeorm";
 import { Request, Response } from "express";
-import * as express from "express";
+import express from "express";
 import * as bodyParser from "body-parser";
 import { AppRoutes } from "./routes";
+import auth from "./helpers/auth";
 const cors = require("cors");
 const path = require("path");
-
 // create connection with database
 // note that it's not active database connection
 // TypeORM creates connection pools and uses them for your requests
@@ -56,17 +56,31 @@ createConnection()
 
     // register all application routes
     AppRoutes.forEach((route) => {
-      app[route.method](
-        route.path,
-        (request: Request, response: Response, next: Function) => {
-          route
-            .action(request, response)
-            .then(() => next)
-            .catch((err) => next(err));
-        }
-      );
+      if (route.allowedRoles || route.apiKeyRequired) {
+        app[route.method](
+          route.path,
+          auth(route.allowedRoles),
+          (request: Request, response: Response, next: Function) => {
+            route
+              .action(request, response)
+              .then(() => next)
+              .catch((err) => next(err));
+          }
+        );
+      } else {
+        app[route.method](
+          route.path,
+          (request: Request, response: Response, next: Function) => {
+            route
+              .action(request, response)
+              .then(() => next)
+              .catch((err) => next(err));
+          }
+        );
+      }
     });
 
+    // ... (other app setup code)
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
     app.use(express.static(path.join(__dirname, "../../dist/syneview.app")));

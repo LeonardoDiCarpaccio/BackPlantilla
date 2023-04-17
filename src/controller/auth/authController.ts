@@ -7,13 +7,15 @@ import { crudMethods } from "../../helpers/crudMethods";
 import { error } from "console";
 var bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
+var dotenv = require("dotenv");
+dotenv.config();
+
 // import { verifyToken } from "./verifyToken";
 
 export class authController {
   // insert with no id, update with id
   public async login(request: Request, response: Response) {
     const clientRepository = getManager().getRepository(client);
-    console.log(request.body.mail, "request.body.mail");
 
     const where = crudMethods.buildWhereClause({
       where: { mail: request.body.mail },
@@ -21,17 +23,34 @@ export class authController {
     });
 
     const result = await clientRepository.find(where);
-    console.log(result, "result");
+
     if (
       !result ||
-      result.length != 1 ||
+      result.length !== 1 ||
       !bcrypt.compareSync(request.body.password, result[0].password)
     ) {
-      response.status(500);
-    } else {
-      result[0].password = "";
-      response.send(result[0]);
+      return response.status(400).send("Invalid email or password.");
     }
+
+    // Create and sign the JWT
+    const token = jwt.sign(
+      { id: result[0].id, role: result[0].role.name },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: parseInt(process.env.JWT_EXPIRATION),
+      }
+    );
+
+    const userToSend = {
+      ...result[0],
+      password: undefined,
+    };
+    console.log(userToSend, "userToSend");
+    response.status(200).send({
+      message: "Logged in successfully.",
+      user: userToSend,
+      token: token,
+    });
   }
 
   //   router.post("/check", VerifyToken, function (req, res) {
