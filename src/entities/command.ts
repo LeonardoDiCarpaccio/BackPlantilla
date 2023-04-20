@@ -29,7 +29,7 @@ export class command {
   @Column({ nullable: true })
   finishDateDisplay: String;
   @Column({ nullable: false })
-  price: number;
+  price: string;
 
   @ManyToOne(() => client, (client) => client.id, {
     nullable: false,
